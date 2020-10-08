@@ -40,6 +40,8 @@ public:
 priority_queue< pa, vector<pa>, comp >  queueTask;
 priority_queue< pa, vector<pa>, comp1 >  encounter;
 
+double intialTemp = 0.0,resistance, capacitance, tamb = 0.0;  
+
 void edfSchedule() {
 	while(!queueTask.empty()) {
 		cout<<"CLOCK : "<<clk<<endl;
@@ -58,7 +60,12 @@ void edfSchedule() {
 					instances[c.first-1]+=1;
 					encounter.pop();
 					encounter.push(make_pair(c.first , make_pair(make_pair(c.second.first.first, instances[c.first-1]*c.second.first.first) , c.second.second )) );
+					if(clk + c.second.second > instances[c.first-1]*c.second.first.first) {
+						cout<<"NOT SCHEDULABLE";
+						exit(0);
+					}
 					clk+=c.second.second;
+
 			}
 			else {
 				if(queueTask.top().second.second + clk <= encounter.top().second.first.second) {
@@ -69,6 +76,11 @@ void edfSchedule() {
 					queueTask.pop();
 					if(queueTask.empty()) {
 						lastPoint = clk; 
+					}
+
+					if( clk + c.second.second > instances[c.first-1]*c.second.first.first) {
+						cout<<"NOT SCHEDULABLE";
+						exit(0);
 					}
 					clk+=c.second.second;
 					
@@ -122,6 +134,10 @@ int main(int argc, char *argv[]) {
 		instances.push_back(0);
 	}
 	for(int i=0;i<input.size();i++) {
+		if(input[i]->period <= input[i]->execution) {
+			perror("Please look into the values. Execution cannot be more than period of a task");
+			exit(0);
+		}
 		queueTask.push(make_pair(input[i]->id ,  make_pair(make_pair(input[i]->period, input[i]->startTime),input[i]->execution) ));
 		cout<<queueTask.top().second.second<<endl;
 	}
