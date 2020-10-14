@@ -74,17 +74,21 @@ pair<double,double> calculateIdleTime(double t0, double power, double exec) {
 			tinstant = thermalModel(t0, exec - time, power);
 		}
 		int m = ceil(conversionFactor * (time));
+		cout<<"M : "<<m<<endl;
 		return make_pair(time,m);
 	}
 	else {
 		double m = conversionFactor * (exec);
-		cout<<m<<endl;
+		cout<<"M : "<<m<<endl;
 		return make_pair(exec,m);
 	}
 }
 
+double prev_clk = 0.0;
+
 void edfSchedule() {
 	while(!queueTask.empty()) {
+		prev_clk = clk;
 		cout<<"CLOCK : "<<clk<<endl;
 		cout<<"Temperature : "<<initialTemp<<endl;
 		cout<<"TOP OF QUEUE : "<<queueTask.top().first<<"(Period, Start, Exec) : " << queueTask.top().second.first.first << " "<< queueTask.top().second.first.second << " "<<queueTask.top().second.second<<endl;;
@@ -239,6 +243,10 @@ void edfSchedule() {
 			clk+=input[c.first-1]->execution;
 			queueTask.pop();
 		}
+		if(prev_clk == clk) {
+			notSchedulable = true;
+			exit(0);
+		}
 		cout<<endl;
 	}
 }	
@@ -248,6 +256,7 @@ int main(int argc, char *argv[]) {
 	clk = 0.0;
 	initialTemp = stod(argv[1], NULL);
 	tmax = stod(argv[2],NULL);
+	double util = 0.0;
 	//Taking the input from the argument
 	//<-- p1 e1 id1 p2 e2 id2....---> 
 	if(argc > 7 && (argc-3)%4 == 0) {	
@@ -255,6 +264,7 @@ int main(int argc, char *argv[]) {
 			Task* task = new Task;
 			task->period = stod(argv[i+1],NULL);
 			task->execution = stod(argv[i],NULL);
+			util+=task->execution/task->period;
 			task->id = stod(argv[i+2],NULL);
 			task->power = stod(argv[i+3],NULL);
 			task->startTime = 0;
@@ -282,8 +292,8 @@ int main(int argc, char *argv[]) {
 	}	
 	ofstream file;
 	file.open("output.txt" , ios::app);
-	file << "Initialtemp : " << initialTemp << ", TMAX : " << tmax;
-	file << "\n";
+	file << "TMAX - InitialTemp : " << tmax - initialTemp;
+	file << "      Utilization : " << util << "\n";
 	edfSchedule();
 	if(!notSchedulable)
 		cout<<"Data Freshness for the [TASKSET] : "<<lastPoint - firstPoint<<endl;
@@ -298,6 +308,7 @@ int main(int argc, char *argv[]) {
 		file << argv[i];
 		file << " ";
 	}
+	file << "\n";
 	file << "\n";
 	file.close();
 	return 0;
