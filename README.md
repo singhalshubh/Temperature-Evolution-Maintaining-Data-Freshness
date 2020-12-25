@@ -1,5 +1,7 @@
 # Thermal-Aware Data Freshness: Formulation and Evaluation
 
+[![CodeFactor](https://www.codefactor.io/repository/github/singhalshubh/thermal-aware-data-freshness-formulation-and-evaluation/badge)](https://www.codefactor.io/repository/github/singhalshubh/thermal-aware-data-freshness-formulation-and-evaluation)
+
 **This project has been done in collaboration with Dr. Deepak Gangadhar at International Institute of Information Technology Hyderabad in the capacity of Research Assistant.**
 
 #### Overview of Project
