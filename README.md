@@ -17,15 +17,15 @@ In safety-critical systems, one can find several applications such as Adaptive C
  
  ### Results
  *Schedulability Percentage and Utilization at various temperature  ranges  for  different  freshness  bounds.  (a)80%,(b)50%, (c)30%, and (d)12%*
- ![alt-text](https://github.com/singhalshubh/Thermal-Aware-Data-Freshness-Formulation-and-Evaluation/blob/main/Results/freshness_decreasing.jpg)
- <br>
+ <img src = "https://github.com/singhalshubh/Thermal-Aware-Data-Freshness-Formulation-and-Evaluation/blob/main/Results/freshness_decreasing.jpg">
+ <br><br>
  *Schedulablilty with Different Chain Lengths*
  <br>
- ![alt](https://github.com/singhalshubh/Thermal-Aware-Data-Freshness-Formulation-and-Evaluation/blob/main/Results/Schedulablilty%20with%20Different%20Chain%20Lengths.jpeg)
- <br>
+ <img src="https://github.com/singhalshubh/Thermal-Aware-Data-Freshness-Formulation-and-Evaluation/blob/main/Results/Schedulablilty%20with%20Different%20Chain%20Lengths.jpeg" width="50%">
+ <br> <br>
  *Schedulablilty with Differing Chain Lengths undervarious temperature constraints*
  <br>
- ![alt1](https://github.com/singhalshubh/Thermal-Aware-Data-Freshness-Formulation-and-Evaluation/blob/main/Results/Schedulablilty%20%20with%20%20different%20%20freshness%20%20boundsunder%20various%20temperature%20constraints.png)
+ <img src="https://github.com/singhalshubh/Thermal-Aware-Data-Freshness-Formulation-and-Evaluation/blob/main/Results/Schedulablilty%20%20with%20%20different%20%20freshness%20%20boundsunder%20various%20temperature%20constraints.png" width="50%">
 
 <br>
  For any queries feel free to reach out to me at shubhpal@seas.upenn.edu. This research work has been submitted to RTAS 2021.
