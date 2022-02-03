@@ -30,5 +30,5 @@ In safety-critical systems, one can find several applications such as Adaptive C
  <img src="https://github.com/singhalshubh/Thermal-Aware-Data-Freshness-Formulation-and-Evaluation/blob/main/Results/Schedulablilty%20%20with%20%20different%20%20freshness%20%20boundsunder%20various%20temperature%20constraints.png" width="50%">
 
 <br>
- For any queries feel free to reach out to me at shubhpal@seas.upenn.edu. This research work has been submitted to RTAS 2021.
+ For any queries feel free to reach out to me at shubhpal@seas.upenn.edu. This research work is currently in progress(Focusing on comments from RTAS 2021).
  
